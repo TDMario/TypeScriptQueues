@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pre build
+        run: |
+          npm -v
+          node -v
+          npm ci
+      - name: Build
+        run: npm run build
+      - name: Run Test
+        run: npm test
